@@ -13,7 +13,6 @@ public interface INgrokService
 
     Task<TunnelResponse> StartAsync(
         Uri host,
-        bool isTls = false,
         CancellationToken cancellationToken = default);
 
     Task StopAsync(CancellationToken cancellationToken = default);
