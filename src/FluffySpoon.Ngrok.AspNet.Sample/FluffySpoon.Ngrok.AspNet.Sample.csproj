@@ -7,8 +7,4 @@
         <RootNamespace>FluffySpoon.Ngrok.AspNet.Sample</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\FluffySpoon.Ngrok.AspNet\FluffySpoon.Ngrok.AspNet.csproj" />
-    </ItemGroup>
-
 </Project>
