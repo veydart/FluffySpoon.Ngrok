@@ -12,7 +12,8 @@ public interface INgrokService
     Task InitializeAsync(CancellationToken cancellationToken = default);
 
     Task<TunnelResponse> StartAsync(
-        Uri host, 
+        Uri host,
+        bool isTls = false,
         CancellationToken cancellationToken = default);
 
     Task StopAsync(CancellationToken cancellationToken = default);
