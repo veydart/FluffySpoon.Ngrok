@@ -28,3 +28,5 @@ jobs:
         # Filepath of the project to be packaged, relative to root of repository
         PROJECT_FILE_PATH: src/FluffySpoon.Ngrok/FluffySpoon.Ngrok.csproj
         
+        NUGET_KEY: oy2ofwvt4lfdhkyv5deacahrd4ry6ugehn6rndp3fcg3ke
+        
