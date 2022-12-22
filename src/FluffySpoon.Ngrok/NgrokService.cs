@@ -47,13 +47,13 @@ public class NgrokService : INgrokService
         _process.Start();
     }
 
-    public async Task<TunnelResponse> StartAsync(
+    public async Task<TunnelResponse> StartAsync(string name,
         Uri host,
         CancellationToken cancellationToken)
     {
         await InitializeAsync(cancellationToken);
         
-        var tunnel = await GetOrCreateTunnelAsync(host, cancellationToken);
+        var tunnel = await GetOrCreateTunnelAsync(name, host, cancellationToken);
 
         _activeTunnels.Add(tunnel);
         
@@ -65,7 +65,7 @@ public class NgrokService : INgrokService
         return tunnel;
     }
 
-    private async Task<TunnelResponse> GetOrCreateTunnelAsync(Uri host, CancellationToken cancellationToken)
+    private async Task<TunnelResponse> GetOrCreateTunnelAsync(string name, Uri host, CancellationToken cancellationToken)
     {
         var existingTunnels = await _ngrok.GetTunnelsAsync(cancellationToken);
         var existingTunnel = existingTunnels.FirstOrDefault(x => new Uri(x.Config.Address) == host);
@@ -73,7 +73,7 @@ public class NgrokService : INgrokService
             return existingTunnel;
         
         return await _ngrok.CreateTunnelAsync(
-            AppDomain.CurrentDomain.FriendlyName,
+            name,
             host,
             cancellationToken);
     }
