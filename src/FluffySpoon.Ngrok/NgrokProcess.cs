@@ -47,7 +47,7 @@ public class NgrokProcess : INgrokProcess
 
     private ProcessStartInfo GetWindowsProcessStartInfo()
     {
-        var windowsProcessStartInfo = new ProcessStartInfo("Ngrok.exe", "start --none")
+        var windowsProcessStartInfo = new ProcessStartInfo("Ngrok.exe", $"start --none --authtoken {_options.AuthToken}")
         {
             CreateNoWindow = true,
             WindowStyle = GetProcessWindowStyle(),
@@ -60,7 +60,7 @@ public class NgrokProcess : INgrokProcess
     private ProcessStartInfo GetLinuxProcessStartInfo()
     {
         var linuxProcessStartInfo =
-            new ProcessStartInfo("/bin/bash", "-c \"" + Directory.GetCurrentDirectory() + "/ngrok start --none\"") 
+            new ProcessStartInfo("/bin/bash", "-c \"" + Directory.GetCurrentDirectory() + $"/ngrok start --none --authtoken {_options.AuthToken}\"") 
             {
                 CreateNoWindow = true,
                 WindowStyle = GetProcessWindowStyle(),
