@@ -3,7 +3,7 @@ using NgrokApi;
 
 namespace FluffySpoon.Ngrok;
 
-public class NgrokService : INgrokService
+public class NgrokService : INgrokService 
 {
     private readonly INgrokDownloader _downloader;
     private readonly INgrokProcess _process;
